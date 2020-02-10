@@ -16,4 +16,24 @@
 
 import UIKit
 
+func returnSteps(int: Int) -> [Int:Int] {
+    var testInt = int
+    var stepsDict: [Int:Int] = [:]
+    while testInt > 0 {
+        if testInt % 3 == 0 {
+            stepsDict[testInt] = 0
+            testInt = testInt/3
+        } else if (testInt + 1) % 3 == 0 {
+            stepsDict[testInt] = 1
+            testInt = (testInt+1)/3
+        }else if (testInt - 1) % 3 == 0 {
+            stepsDict[testInt] = -1
+            testInt = (testInt-1)/3
+        }
+    }
+    return stepsDict
+}
+print(returnSteps(int: 100).compactMap( { ($0.key, $0.value) }).sorted(by: { $0.0 > $1.0 }))
+
+
 //: [Next](@next)
