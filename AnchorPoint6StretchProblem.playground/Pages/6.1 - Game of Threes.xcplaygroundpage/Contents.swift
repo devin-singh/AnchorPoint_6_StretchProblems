@@ -58,3 +58,50 @@ func sumOf(_ numbers: Int...) -> Int {
 }
 
 sumOf(1, 2, 3, 4)
+
+
+//: [Previous](@previous)
+/*:
+ # Wednesday Stretch Problem 6.3
+ ## Fibbonacci Number
+ 
+ ### Instructions:
+ 1. Create a function that finds the closest fibonacci number that is less than or equal to the number that is passed into a function.
+ 2. Don't hesitate to Google what a Fibonacci number is.
+ 3. Test it by passing in the number 2000. We will compare results.
+ 
+ ### Black Diamond 💎💎💎
+ Create the above using a single line of code in the function body. (Hint: recursion)
+ */
+
+
+import Foundation
+
+func findClosestFib(num: Int) -> Int {
+    
+    var previousValue: Int = 0
+    var currentValue = 1
+    
+    while num >= currentValue {
+        let currentValuePlaceholder = currentValue  // 2
+        currentValue = currentValue + previousValue // 3
+        previousValue = currentValuePlaceholder // 2
+    }
+    
+    return previousValue
+    //return abs(num-currentValue) < abs(num-previousValue) ? currentValue : previousValue
+}
+
+findClosestFib(num: 2000)
+
+
+func findClosestFibRecur(goal: Int, currentVal: Int = 1, previousVal: Int = 0) -> Int {
+    return goal >= currentVal ? findClosestFibRecur(goal: goal, currentVal: currentVal + previousVal, previousVal: currentVal) : previousVal
+}
+
+findClosestFibRecur(goal: 3)
+
+
+//: [Next](@next)
+
+
